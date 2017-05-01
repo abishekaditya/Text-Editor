@@ -1,7 +1,7 @@
 {
-  "name": "Text Editor",
+  "name": "text-editor",
   "version": "1.0.0",
-  "description": "A simple Electron text editor",
+  "description": "An Electron based text editing app with spell-check",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
@@ -9,13 +9,10 @@
   "repository": "https://github.com/abishekaditya/Text-Editor",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "text",
+    "editor"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "private": true,
   "devDependencies": {
     "electron": "~1.6.2"
   }

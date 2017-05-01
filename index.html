@@ -4,22 +4,86 @@
     <meta charset="UTF-8">
     <title>Text Editor</title>
     <style>
-      textarea { 
-        outline: none;
-        box-shadow: none;
-        width: 98vw;
-        height: 96vh;
-        resize: none;
-        border: none;
-        font-size: 18px; }
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+*, *::before, *::after {
+  box-sizing: none;
+}
+
+
+.container, .backdrop, textarea {
+  width: 60vw;
+  height: 96vh;
+}
+
+.highlights, textarea {
+  font: 20px/28px 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+}
+
+.container {
+  display: block;
+  transform: translateZ(0);
+  -webkit-text-size-adjust: none;
+}
+
+.backdrop {
+  position: absolute;
+  z-index: 1;
+  border: none;
+  background-color: #fff;
+  overflow: auto;
+  pointer-events: none;
+  transition: transform 1s;
+}
+
+.highlights {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: transparent;
+}
+
+textarea {
+  outline: none;
+  background-color: #f0f0f0;
+  display: block;
+  position: absolute;
+  z-index: 2;
+  height: 96vh;
+  width: 60vw;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  color: #444;
+  background-color: transparent;
+  overflow: auto;
+  resize: none;
+  transition: transform 1s;
+}
+
+mark {
+  border-radius: 3px;
+  color: transparent;
+  background-color: #E07E7E;
+}
     </style>
   </head>
   <body>
-    <textarea> </textarea>
+       <div class="container">
+  <div class="backdrop">
+    <div class="highlights"></div>
+  </div>
+  <textarea></textarea>
+</div>
   </body>
 
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="data.json"></script>
+  <script type="text/javascript" src="mine.js"></script>
   <script>
-// You can also require other files to run in this process
-require('./renderer.js')
+  // You can also require other files to run in this process
+  require('./renderer.js')
   </script>
+  <script>if (window.module) module = window.module;</script>
 </html>

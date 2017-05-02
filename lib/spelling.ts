@@ -1,17 +1,18 @@
-import { readFile } from 'fs';
 
 interface Counter {
     [key: string]: number;
 }
 
-export class SpellCorrector {
+class SpellCorrector {
     private _wordCount: Counter;
     private _nWords: number;
     private readonly _letters: string[];
 
 
-    constructor(letters: string[]) {
-        this._letters = letters;
+    constructor(letters: string[],data: Counter) {
+      this._letters = letters;
+      this._wordCount = data;
+      this._nWords = Object.keys(this._wordCount).length;
     }
 
     correct(word): string {
@@ -27,23 +28,8 @@ export class SpellCorrector {
 
         return validWords[index];
 
-
     }
-
-    loadCounts(filePath: string, callback: Function) {
-        readFile(filePath, 'utf-8', (err, text) => {
-            if (err) return callback(err);
-
-            try {
-                this._wordCount = JSON.parse(text);
-                this._nWords = Object.keys(this._wordCount).length;
-            } catch (parseErr) {
-                return callback(parseErr);
-            }
-            return callback(null);
-        });
-
-    }
+    
 
     private _indexOfMaximum(list: number[]) {
         return list.reduce(

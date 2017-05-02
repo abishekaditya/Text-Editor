@@ -69,21 +69,26 @@ mark {
     </style>
   </head>
   <body>
-       <div class="container">
-  <div class="backdrop">
-    <div class="highlights"></div>
-  </div>
-  <textarea></textarea>
+  <header class="head">
+  </header>
+  <div class="container">
+    <div class="backdrop">
+      <div class="highlights"></div>
+    </div>
+        <textarea id="textarea"></textarea>
 </div>
   </body>
 
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="data.json"></script>
+  <script type="text/javascript" src="lib/spelling.js"></script>
   <script type="text/javascript" src="mine.js"></script>
+
   <script>
   // You can also require other files to run in this process
-  require('./renderer.js')
+  require('./renderer.js');
+  $(".head").empty();
   </script>
   <script>if (window.module) module = window.module;</script>
 </html>

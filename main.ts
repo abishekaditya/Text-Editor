@@ -27,6 +27,7 @@ app.on('activate', () => {
 let createMenu = () => {
     console.log("Create Menu");
     const menu = Menu.getApplicationMenu();
+    if (menu == null) return;
     menu.insert(0,new MenuItem({
         label: 'File',
         submenu: [

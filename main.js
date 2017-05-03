@@ -25,6 +25,8 @@ electron_1.app.on('activate', () => {
 let createMenu = () => {
     console.log("Create Menu");
     const menu = electron_1.Menu.getApplicationMenu();
+    if (menu == null)
+        return;
     menu.insert(0, new electron_1.MenuItem({
         label: 'File',
         submenu: [

@@ -7,6 +7,7 @@ let createWindow = () => {
     // Actually open the window
     win = new electron_1.BrowserWindow({ width: 800, height: 900 });
     win.loadURL(`file://${__dirname}/index.html`);
+    createMenu();
     win.on('closed', () => {
         win = null;
     });
@@ -21,3 +22,19 @@ electron_1.app.on('activate', () => {
     if (win === null)
         createWindow();
 });
+let createMenu = () => {
+    console.log("Create Menu");
+    const menu = electron_1.Menu.getApplicationMenu();
+    menu.insert(0, new electron_1.MenuItem({
+        label: 'File',
+        submenu: [
+            {
+                label: 'Save',
+                click: () => {
+                    win.webContents.send('save');
+                }
+            }
+        ]
+    }));
+    electron_1.Menu.setApplicationMenu(menu);
+};
